@@ -1,9 +1,10 @@
+import 'package:fixflow/loc_calc.dart';
+import 'package:fixflow/order_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hellogram/loc_calc.dart';
-import 'package:hellogram/order_page.dart';
+
 // Import other necessary files
 import 'service_center_card.dart';
 import 'search_page.dart';

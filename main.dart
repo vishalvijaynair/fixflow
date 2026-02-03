@@ -1,61 +1,32 @@
+import 'package:fixflow/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'login_page.dart';
-import 'home_screen.dart';
-void main()  async {
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize Firebase properly
+  await Firebase.initializeApp();
 
-  runApp(CarServiceApp());
+  runApp(const CarServiceApp());
 }
 
-
 class CarServiceApp extends StatelessWidget {
-  // Simulate some initialization process
-  Future<void> _initializeApp() async {
-    await Future.delayed(Duration(seconds: 2)); // Simulating a delay of 2 seconds
-  }
+  const CarServiceApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _initializeApp(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          // Initialization is complete, return your app's main screen
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Car Service App',
-            theme: ThemeData(
-              primarySwatch: Colors.yellow,
-              colorScheme: ColorScheme.fromSwatch(
-                accentColor: Colors.amber,
-              ), // Accent color directly under ThemeData
-              fontFamily: 'Montserrat', // Your selected font
-            ),
-            home: LoginPage(),
-          );
-        } else {
-          // Show a loading indicator while waiting for initialization to complete
-          return MaterialApp(
-  debugShowCheckedModeBanner: false,
-  home: Scaffold(
-    body: Container(
-  decoration: BoxDecoration(
-    image: DecorationImage(
-      image: AssetImage(
-        "assets/loading_page.png",
-      ),
-          fit: BoxFit.cover,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Car Service App',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.amber,
         ),
+        fontFamily: 'Montserrat',
+        useMaterial3: true,
       ),
-    ),
-  ),
-);
-
-        }
-      },
+      home: const SplashScreen(),
     );
   }
 }

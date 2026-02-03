@@ -1,7 +1,7 @@
+import 'package:fixflow/upi_payment.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hellogram/upi_payment.dart';
 import 'package:intl/intl.dart';
 
 class ServiceCenterDetailsPage extends StatefulWidget {
